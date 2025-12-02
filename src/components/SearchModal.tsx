@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, X, Loader2, ChefHat, ArrowRight } from 'lucide-react';
+import { Search, X, ChefHat, ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 interface SearchModalProps {
@@ -44,7 +44,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSearch, is
 
         {/* Header / Input Section */}
         <form onSubmit={handleSubmit} className="relative p-8 md:p-10 pb-0">
-          <div className="relative flex items-center">
+          <div className="relative flex items-center mt-8">
             <Search className="absolute left-0 text-primary-500" size={32} strokeWidth={2.5} />
             <input
               ref={inputRef}
@@ -106,7 +106,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSearch, is
               <div className="mt-10 pt-6 border-t border-stone-100 flex items-start gap-4 text-stone-400 text-sm">
                 <div className="w-6 h-6 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center font-serif italic font-bold shrink-0">i</div>
                 <p>
-                  Tip: Our AI searches for the best budget-friendly recipes in real-time and translates them for you.
+                  {t('tip')}
                 </p>
               </div>
             </div>

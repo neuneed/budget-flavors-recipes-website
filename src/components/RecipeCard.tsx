@@ -11,8 +11,7 @@ interface RecipeCardProps {
 }
 
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onClick }) => {
-  const locale = useLocale();
-  const title = locale === 'es' ? recipe.title : (recipe.titleEn || recipe.title);
+  const title = recipe.title;
 
   return (
     <div

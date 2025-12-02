@@ -1,0 +1,23 @@
+# Project Context
+
+## Database: Supabase PostgreSQL
+
+### Schema Overview
+- recipes (main table)
+- ingredients, instructions, nutrition (related data)
+- *_translations tables (i18n support for ES/EN)
+
+### Key Files
+- `supabase/schema.sql` - Complete database schema
+- `src/lib/supabase.ts` - Database client
+- `src/services/recipeService.ts` - CRUD operations
+- `.env.local` - NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+### Data Flow
+1. AI generates recipes → saves to Supabase
+2. App loads recipes from Supabase (with caching)
+3. Translations loaded based on locale (en/es)
+
+### TypeScript Types
+All database operations are strongly typed. See RecipeService for interfaces.
+

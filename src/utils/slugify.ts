@@ -1,22 +1,23 @@
 import { Recipe } from '../types';
 
 // Generate URL-friendly slug from recipe title
-export const generateRecipeSlug = (recipe: Recipe): string => {
-    const titleEn = recipe.titleEn || recipe.title;
+export function generateRecipeSlug(recipe: Recipe): string {
+    // Use English title for URL (it's now the default)
+    const title = recipe.title;
 
-    // Convert to lowercase, replace spaces with underscores, remove special chars
-    const slug = titleEn
+    // Create slug from title
+    const slug = title
         .toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
-        .replace(/\s+/g, '_') // Replace spaces with underscores
-        .replace(/-+/g, '_'); // Replace hyphens with underscores
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
 
-    // Combine slug with ID: recipe_name_id
-    return `${slug}_${recipe.id}`;
-};
+    return `${slug}-${recipe.id}`;
+}
 
-// Extract ID from slug (last part after final underscore)
-export const getIdFromSlug = (slug: string): string => {
-    const parts = slug.split('_');
-    return parts[parts.length - 1];
+// Extract ID from slug (format: "recipe-name-123")
+export const getIdFromSlug = (slug: string): number => {
+    // ID is at the end after the last hyphen
+    const parts = slug.split('-');
+    const id = parseInt(parts[parts.length - 1], 10);
+    return isNaN(id) ? 0 : id;
 };

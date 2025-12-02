@@ -28,6 +28,7 @@
     "searching": "El chef está buscando...",
     "browsingRecipes": "Consultando recetas",
     "trendingDishes": "Platillos Populares",
+    "tip": "Consejo: Busca recetas económicas y descubre comidas deliciosas que no romperán tu presupuesto.",
     "suggestions": [
       "Pasta económica",
       "Pollo al horno",
@@ -43,13 +44,13 @@
     "servings": "Porciones",
     "prepTime": "Tiempo",
     "cookTime": "Cocción",
+    "rating": "Calificación",
     "listen": "Escuchar",
     "instructions": "Instrucciones",
     "recipeAudio": "Instrucciones",
     "ingredients": "Ingredientes",
     "cookingInstructions": "Cooking Instructions",
     "steps": "Pasos",
-    "viewProfile": "Ver Perfil",
     "nutritionalInfo": "Información Nutricional",
     "loadingRecipe": "Cargando receta...",
     "pp": "pp"

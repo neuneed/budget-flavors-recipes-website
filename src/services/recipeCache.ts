@@ -1,17 +1,32 @@
 import { Recipe } from '../types';
+import { getRecipeById } from './recipeService';
 
-// Simple in-memory store for recipes
-// In a real app, this would be a database or API call
-let recipesCache: Recipe[] = [];
+// Simple in-memory store for recipes (used as cache layer)
+const recipeCache: Map<number, Recipe> = new Map();
 
 export const storeRecipes = (recipes: Recipe[]) => {
-    recipesCache = recipes;
+    recipes.forEach(recipe => {
+        recipeCache.set(recipe.id, recipe);
+    });
 };
 
-export const getRecipeById = (id: string): Recipe | undefined => {
-    return recipesCache.find(r => r.id === id);
+export const getRecipe = async (id: number, locale: string = 'en'): Promise<Recipe | undefined> => {
+    // Check cache first
+    if (recipeCache.has(id)) {
+        return recipeCache.get(id);
+    }
+
+    // Fetch from database if not in cache
+    const recipe = await getRecipeById(id, locale);
+    if (recipe) {
+        recipeCache.set(id, recipe);
+    }
+
+    return recipe || undefined;
 };
 
-export const getAllRecipes = (): Recipe[] => {
-    return recipesCache;
+export const getRecipeBySlug = async (slug: string, locale: string = 'en'): Promise<Recipe | undefined> => {
+    // Extract ID from slug (format: "123-recipe-name")
+    const id = parseInt(slug.split('-')[0], 10);
+    return getRecipe(id, locale);
 };

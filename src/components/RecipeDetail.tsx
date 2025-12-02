@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Clock, Users, ArrowLeft, Play, PauseCircle, Check, ChefHat, Flame, Link2 } from 'lucide-react';
+import { Clock, Users, Play, PauseCircle, Check, Flame, Link2, Star, StarHalf } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Recipe } from '../types';
 
@@ -10,24 +10,37 @@ interface RecipeDetailProps {
     onBack: () => void;
 }
 
-const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe, onBack }) => {
+const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe }) => {
     const t = useTranslations('recipe');
     const locale = useLocale();
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [checkedIngredients, setCheckedIngredients] = useState<Set<number>>(new Set());
     const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+    const prevLocaleRef = useRef(locale);
 
     useEffect(() => { return () => window.speechSynthesis.cancel(); }, []);
-    useEffect(() => { if (isSpeaking) { window.speechSynthesis.cancel(); setIsSpeaking(false); setIsPaused(false); } }, [locale]);
+    useEffect(() => {
+        if (prevLocaleRef.current !== locale) {
+            window.speechSynthesis.cancel();
+            prevLocaleRef.current = locale;
+            // Reset state on next tick to avoid synchronous setState in effect
+            setTimeout(() => {
+                setIsSpeaking(false);
+                setIsPaused(false);
+            }, 0);
+        }
+    }, [locale]);
 
     const toggleIngredient = (index: number) => {
         const next = new Set(checkedIngredients);
-        next.has(index) ? next.delete(index) : next.add(index);
+        if (next.has(index)) {
+            next.delete(index);
+        } else {
+            next.add(index);
+        }
         setCheckedIngredients(next);
     };
-
-    const getText = (es: string, en?: string) => locale === 'es' ? es : (en || es);
 
     const handleSpeak = () => {
         if (isSpeaking && isPaused) { window.speechSynthesis.resume(); setIsPaused(false); return; }
@@ -35,16 +48,17 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe, onBack }) => {
         window.speechSynthesis.cancel();
         setIsSpeaking(true); setIsPaused(false);
 
-        const title = getText(recipe.title, recipe.titleEn);
-        const desc = getText(recipe.description, recipe.descriptionEn);
-        let textToRead = `${title}. ${desc}. `;
+        // Recipe is already localized by the service
+        const title = recipe.title;
+        const description = recipe.description;
+        let textToRead = `${title}. ${description}. `;
 
         if (locale === 'es') {
             textToRead += "Ingredientes: "; recipe.ingredients.forEach(i => textToRead += `${i.quantity} de ${i.item}. `);
-            textToRead += "Instrucciones: "; recipe.instructions.forEach(step => textToRead += `Paso ${step.stepNumber}: ${step.description}. `);
+            textToRead += "Instrucciones: "; recipe.instructions.forEach((step, idx) => textToRead += `Paso ${idx + 1}: ${step.description}. `);
         } else {
-            textToRead += "Ingredients: "; recipe.ingredients.forEach(i => textToRead += `${i.quantity} of ${i.itemEn || i.item}. `);
-            textToRead += "Instructions: "; recipe.instructions.forEach(step => textToRead += `Step ${step.stepNumber}: ${step.descriptionEn || step.description}. `);
+            textToRead += "Ingredients: "; recipe.ingredients.forEach(i => textToRead += `${i.quantity} of ${i.item}. `);
+            textToRead += "Instructions: "; recipe.instructions.forEach((step, idx) => textToRead += `Step ${idx + 1}: ${step.description}. `);
         }
 
         const utterance = new SpeechSynthesisUtterance(textToRead);
@@ -55,8 +69,9 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe, onBack }) => {
         window.speechSynthesis.speak(utterance);
     };
 
-    const title = getText(recipe.title, recipe.titleEn);
-    const description = getText(recipe.description, recipe.descriptionEn);
+    // Recipe is already localized by the service
+    const title = recipe.title;
+    const description = recipe.description;
 
     const titleWords = title.split(' ');
     const firstHalf = titleWords.slice(0, Math.ceil(titleWords.length / 2)).join(' ');
@@ -64,15 +79,6 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe, onBack }) => {
 
     return (
         <div className="animate-fade-in pb-20 pt-4 md:pt-8">
-            <div className="mb-8">
-                <button onClick={onBack} className="flex items-center gap-2 text-stone-500 hover:text-stone-900 transition-colors font-medium">
-                    <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center">
-                        <ArrowLeft size={16} />
-                    </div>
-                    {t('backToRecipes')}
-                </button>
-            </div>
-
             <div className="bg-stone-50 rounded-[3rem] p-8 md:p-12 relative overflow-hidden mb-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
                     <div className="order-2 md:order-1 animate-slide-up">
@@ -83,6 +89,36 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe, onBack }) => {
                         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-stone-900 leading-[1.1] mb-6">
                             {firstHalf} <span className="text-primary-500">{secondHalf}</span>
                         </h1>
+
+                        {recipe.rating && recipe.rating > 0 && (
+                            <div className="flex items-center gap-4 mb-8">
+                                <div className="flex gap-1">
+                                    {[...Array(5)].map((_, i) => {
+                                        const ratingValue = i + 1;
+                                        const currentRating = recipe.rating || 0;
+                                        return (
+                                            <span key={i}>
+                                                {currentRating >= ratingValue ? (
+                                                    <Star size={20} className="fill-amber-400 text-amber-400" />
+                                                ) : currentRating >= ratingValue - 0.5 ? (
+                                                    <StarHalf size={20} className="fill-amber-400 text-amber-400" />
+                                                ) : (
+                                                    <Star size={20} className="text-stone-300" />
+                                                )}
+                                            </span>
+                                        );
+                                    })}
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <span className="font-bold text-stone-900 text-lg">{recipe.rating.toFixed(1)}</span>
+                                    {!!recipe.ratingCount && (
+                                        <span className="text-stone-500 text-sm font-medium">
+                                            ({recipe.ratingCount} {t('reviews', { fallback: 'reviews' })})
+                                        </span>
+                                    )}
+                                </div>
+                            </div>
+                        )}
 
                         <p className="text-stone-600 text-lg leading-relaxed mb-8 max-w-md">
                             {description}
@@ -127,7 +163,7 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe, onBack }) => {
                             className="relative w-full h-full object-cover rounded-[2rem] shadow-2xl shadow-stone-200 transform rotate-2 hover:rotate-0 transition-all duration-700"
                         />
 
-                        <div className="absolute -bottom-6 -left-6 z-20">
+                        <div className="absolute -bottom-6 -right-6 z-20">
                             <button
                                 onClick={handleSpeak}
                                 className="flex items-center gap-3 bg-stone-900 text-white p-4 pr-6 rounded-full shadow-xl hover:bg-stone-800 transition-all hover:scale-105"
@@ -160,7 +196,9 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe, onBack }) => {
                                         {checkedIngredients.has(idx) && <Check size={14} strokeWidth={3} />}
                                     </div>
                                     <p className={`text-lg ${checkedIngredients.has(idx) ? 'text-stone-400 line-through' : 'text-stone-800'}`}>
-                                        <span className="font-bold">{ing.quantity}</span> {locale === 'es' ? ing.item : (ing.itemEn || ing.item)}
+                                        <span className="flex-1 text-stone-700 font-medium">
+                                            {ing.quantity} {ing.item}
+                                        </span>
                                     </p>
                                 </div>
                             ))}
@@ -179,19 +217,15 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe, onBack }) => {
                         </div>
 
                         <div className="space-y-6">
-                            {recipe.instructions.map((step, idx) => (
-                                <div key={idx} className="flex gap-6 md:gap-8 p-6 md:p-8 bg-stone-50 rounded-[2rem] hover:bg-white hover:shadow-xl hover:shadow-stone-100 transition-all duration-300 border border-transparent hover:border-stone-100">
-                                    <div className="flex-shrink-0">
-                                        <span className="text-4xl font-bold text-primary-500/40 font-serif">
-                                            {String(step.stepNumber).padStart(2, '0')}
-                                        </span>
+                            {recipe.instructions.map((step, index) => (
+                                <li key={index} className="flex gap-4">
+                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center font-bold text-sm">
+                                        {index + 1}
                                     </div>
-                                    <div className="pt-2">
-                                        <p className="text-lg md:text-xl text-stone-700 leading-relaxed font-medium">
-                                            {locale === 'es' ? step.description : (step.descriptionEn || step.description)}
-                                        </p>
-                                    </div>
-                                </div>
+                                    <p className="flex-1 text-stone-700 leading-relaxed pt-1">
+                                        {step.description}
+                                    </p>
+                                </li>
                             ))}
                         </div>
                     </div>
@@ -205,9 +239,6 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe, onBack }) => {
                         </div>
                         <p className="text-stone-500 text-xs font-bold uppercase tracking-widest mb-1">Recipe by</p>
                         <h3 className="text-xl font-bold text-stone-800 mb-6">Chef Maria Rodriguez</h3>
-                        <button className="w-full py-3 bg-stone-900 text-white rounded-xl font-bold hover:bg-stone-800 transition-colors text-sm">
-                            {t('viewProfile')}
-                        </button>
                     </div>
 
                     <div className="bg-white border border-stone-100 rounded-[2.5rem] p-8 shadow-lg shadow-stone-100">

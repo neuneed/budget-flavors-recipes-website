@@ -28,6 +28,7 @@
     "searching": "The chef is searching...",
     "browsingRecipes": "Browsing recipes",
     "trendingDishes": "Trending Dishes",
+    "tip": "Tip: Search for budget-friendly recipes and discover delicious meals that won't break the bank.",
     "suggestions": [
       "Budget pasta",
       "Baked chicken",
@@ -43,13 +44,13 @@
     "servings": "Servings",
     "prepTime": "Prep Time",
     "cookTime": "Cook Time",
+    "rating": "Rating",
     "listen": "Listen",
     "instructions": "Recipe Audio",
     "recipeAudio": "Recipe Audio",
     "ingredients": "Ingredients",
     "cookingInstructions": "Cooking Instructions",
     "steps": "Steps",
-    "viewProfile": "View Profile",
     "nutritionalInfo": "Nutritional Info",
     "loadingRecipe": "Loading recipe...",
     "pp": "pp"

@@ -4,14 +4,14 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { Recipe, SearchState, LoadingState } from '@/types';
-import { searchAndTranslateRecipes, getFeaturedRecipes } from '@/services/geminiService';
+import { searchAndTranslateRecipes, getFeaturedRecipes } from '@/services/recipeService';
 import { storeRecipes } from '@/services/recipeCache';
 import { generateRecipeSlug } from '@/utils/slugify';
 
 import Layout from '@/components/Layout';
 import RecipeCard from '@/components/RecipeCard';
 import SearchModal from '@/components/SearchModal';
-import { Loader2, Sparkles, ChefHat, ArrowRight } from 'lucide-react';
+import { Sparkles, ChefHat, ArrowRight } from 'lucide-react';
 
 export default function Home() {
     const router = useRouter();
