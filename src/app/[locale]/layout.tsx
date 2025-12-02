@@ -3,6 +3,7 @@ import { Poppins, Playfair_Display } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "../globals.css";
 
 const poppins = Poppins({
@@ -48,6 +49,7 @@ export default async function LocaleLayout({
                     {children}
                 </NextIntlClientProvider>
                 <Analytics />
+                <SpeedInsights />
             </body>
         </html>
     );
