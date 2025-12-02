@@ -1,6 +1,6 @@
 # AI-Powered Recipe Platform | AI 驱动的食谱平台
 
-[**Live Demo / 在线演示**](https://budgetbytes-copy.vercel.app/)
+[**Live Demo / 在线演示**](https://budgetflavors.vercel.app/en)
 
 A modern, localized recipe discovery platform reimagined with AI integration. This project demonstrates a full-stack Next.js application that combines traditional web architecture with advanced AI capabilities to deliver dynamic, multilingual content, along with a serverless backend service built on PostgreSQL.
 
