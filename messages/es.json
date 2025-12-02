@@ -1,0 +1,93 @@
+{
+  "common": {
+    "siteName": "Sabores Económicos",
+    "siteNameAlt": "Sabores",
+    "siteNameHighlight": "Económicos",
+    "search": "Buscar...",
+    "language": "ES"
+  },
+  "home": {
+    "badge": "#1 en Recetas Económicas",
+    "heroTitle1": "Cocina",
+    "heroTitle2": "Rico",
+    "heroTitle3": "Gasta",
+    "heroTitle4": "Poco",
+    "heroDescription": "Descubre miles de recetas deliciosas y económicas. Saludable, rápido y barato.",
+    "ctaButton": "Empezar a Cocinar",
+    "popularThisWeek": "Populares esta semana",
+    "results": "Resultados",
+    "viewAll": "Ver todo",
+    "cooking": "Cocinando...",
+    "findingRecipes": "Buscando recetas deliciosas",
+    "error": "Error",
+    "tryAgain": "Intentar otra vez",
+    "featured": "Destacados"
+  },
+  "search": {
+    "placeholder": "¿Qué cocinamos hoy?",
+    "searching": "El chef está buscando...",
+    "browsingRecipes": "Consultando recetas",
+    "trendingDishes": "Platillos Populares",
+    "suggestions": [
+      "Pasta económica",
+      "Pollo al horno",
+      "Ensaladas frescas",
+      "Sopas reconfortantes",
+      "Tacos rápidos",
+      "Curry vegetariano"
+    ]
+  },
+  "recipe": {
+    "backToRecipes": "Volver a Recetas",
+    "letsCook": "A Cocinar",
+    "servings": "Porciones",
+    "prepTime": "Tiempo",
+    "cookTime": "Cocción",
+    "listen": "Escuchar",
+    "instructions": "Instrucciones",
+    "recipeAudio": "Instrucciones",
+    "ingredients": "Ingredientes",
+    "cookingInstructions": "Cooking Instructions",
+    "steps": "Pasos",
+    "viewProfile": "Ver Perfil",
+    "nutritionalInfo": "Información Nutricional",
+    "loadingRecipe": "Cargando receta...",
+    "pp": "pp"
+  },
+  "about": {
+    "ourStory": "Nuestra Historia",
+    "title1": "Democratizando la",
+    "title2": "Buena Comida",
+    "description": "Nuestra misión es simple: ayudar a todos a cocinar comidas deliciosas y asequibles, rompiendo las barreras del idioma con inteligencia artificial.",
+    "budgetFriendly": "Recetas Económicas",
+    "budgetFriendlyDesc": "Curamos las mejores recetas de bajo costo de la web para cuidar tu bolsillo.",
+    "noBarriers": "Sin Barreras",
+    "noBarriersDesc": "Traducimos ingredientes y medidas para que cocines sin confusiones."
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "¿Tienes preguntas o sugerencias?",
+    "information": "Información",
+    "replyTime": "Respondemos en 24 horas.",
+    "name": "Nombre",
+    "email": "Email",
+    "message": "Mensaje",
+    "sendMessage": "Enviar Mensaje"
+  },
+  "privacy": {
+    "legal": "Legal",
+    "title": "Política de Privacidad",
+    "lastUpdated": "Última actualización: Marzo 2024",
+    "dataCollection": "No recopilamos datos personales. Las búsquedas se procesan en tiempo real utilizando la API de Gemini y no se almacenan de forma permanente en nuestros servidores.",
+    "cookies": "Utilizamos almacenamiento local solo para guardar sus preferencias de idioma y recetas favoritas temporalmente.",
+    "thirdPartyServices": "Este sitio utiliza servicios de terceros para procesar contenido. Al utilizar este servicio, usted acepta nuestros términos de servicio.",
+    "agreement": "Al usar Sabores Económicos, aceptas estos términos."
+  },
+  "layout": {
+    "footerTagline": "Bon Appétit",
+    "privacy": "Privacy",
+    "contact": "Contact",
+    "about": "About",
+    "copyright": "© 2024 Sabores Económicos. Todos los derechos reservados."
+  }
+}

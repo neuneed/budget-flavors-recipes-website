@@ -1,0 +1,93 @@
+{
+  "common": {
+    "siteName": "Budget Flavors",
+    "siteNameAlt": "Budget",
+    "siteNameHighlight": "Flavors",
+    "search": "Search...",
+    "language": "EN"
+  },
+  "home": {
+    "badge": "#1 in Budget Recipes",
+    "heroTitle1": "Cook",
+    "heroTitle2": "Delicious",
+    "heroTitle3": "Spend",
+    "heroTitle4": "Less",
+    "heroDescription": "Discover thousands of delicious and budget-friendly recipes. Healthy, fast, and cheap.",
+    "ctaButton": "Start Cooking",
+    "popularThisWeek": "Popular this week",
+    "results": "Results",
+    "viewAll": "View all",
+    "cooking": "Cooking...",
+    "findingRecipes": "Finding delicious recipes",
+    "error": "Error",
+    "tryAgain": "Try again",
+    "featured": "Featured"
+  },
+  "search": {
+    "placeholder": "What are we cooking?",
+    "searching": "The chef is searching...",
+    "browsingRecipes": "Browsing recipes",
+    "trendingDishes": "Trending Dishes",
+    "suggestions": [
+      "Budget pasta",
+      "Baked chicken",
+      "Fresh salads",
+      "Comfort soups",
+      "Quick tacos",
+      "Veggie curry"
+    ]
+  },
+  "recipe": {
+    "backToRecipes": "Back to Recipes",
+    "letsCook": "Let's Cook",
+    "servings": "Servings",
+    "prepTime": "Prep Time",
+    "cookTime": "Cook Time",
+    "listen": "Listen",
+    "instructions": "Recipe Audio",
+    "recipeAudio": "Recipe Audio",
+    "ingredients": "Ingredients",
+    "cookingInstructions": "Cooking Instructions",
+    "steps": "Steps",
+    "viewProfile": "View Profile",
+    "nutritionalInfo": "Nutritional Info",
+    "loadingRecipe": "Loading recipe...",
+    "pp": "pp"
+  },
+  "about": {
+    "ourStory": "Our Story",
+    "title1": "Democratizing",
+    "title2": "Good Food",
+    "description": "Our mission is simple: to help everyone cook delicious, affordable meals by breaking down language barriers with artificial intelligence.",
+    "budgetFriendly": "Budget Friendly",
+    "budgetFriendlyDesc": "We curate the best low-cost recipes from the web to watch your wallet.",
+    "noBarriers": "No Barriers",
+    "noBarriersDesc": "We translate ingredients and measurements so you can cook without confusion."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Have questions or suggestions?",
+    "information": "Information",
+    "replyTime": "We reply within 24 hours.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "sendMessage": "Send Message"
+  },
+  "privacy": {
+    "legal": "Legal",
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: March 2024",
+    "dataCollection": "We do not collect personal data. Searches are processed in real-time using the Gemini API and are not permanently stored on our servers.",
+    "cookies": "We use local storage only to save your language preferences and favorite recipes temporarily.",
+    "thirdPartyServices": "This site uses third-party services to process content. By using this service, you agree to our terms of service.",
+    "agreement": "By using Sabores Económicos, you agree to these terms."
+  },
+  "layout": {
+    "footerTagline": "Bon Appétit",
+    "privacy": "Privacy",
+    "contact": "Contact",
+    "about": "About",
+    "copyright": "© 2024 Sabores Económicos. All rights reserved."
+  }
+}
