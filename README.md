@@ -23,7 +23,7 @@ A modern, localized recipe discovery platform reimagined with AI integration. Th
 
 ### 🏗 Architecture & Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router) for server-side rendering and optimized performance.
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router) for server-side rendering and optimized performance.
 - **Language**: TypeScript for type-safe, maintainable code.
 - **Styling**: Tailwind CSS for a responsive, modern, and clean UI design.
 - **Internationalization**: `next-intl` for robust routing and content localization.
@@ -101,7 +101,7 @@ MIT
 
 ### 🏗 架构与技术栈
 
-- **框架**：[Next.js 15](https://nextjs.org/) (App Router)，提供服务端渲染和卓越的性能优化。
+- **框架**：[Next.js 16](https://nextjs.org/) (App Router)，提供服务端渲染和卓越的性能优化。
 - **语言**：TypeScript，确保代码的类型安全和可维护性。
 - **样式**：Tailwind CSS，打造响应式、现代化且整洁的 UI 设计。
 - **国际化**：`next-intl`，提供强大的路由和内容本地化支持。

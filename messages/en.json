@@ -52,6 +52,13 @@
     "cookingInstructions": "Cooking Instructions",
     "steps": "Steps",
     "nutritionalInfo": "Nutritional Info",
+    "recipeBy": "Recipe by",
+    "calories": "Calories",
+    "protein": "Protein",
+    "fat": "Fat",
+    "carbs": "Carbs",
+    "source": "Source",
+    "originalRecipe": "Original Recipe",
     "loadingRecipe": "Loading recipe...",
     "pp": "pp"
   },

@@ -237,7 +237,7 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe }) => {
                         <div className="w-24 h-24 bg-white rounded-full mx-auto mb-4 p-1 shadow-lg">
                             <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&w=200&q=80" className="w-full h-full rounded-full object-cover" alt="Chef" />
                         </div>
-                        <p className="text-stone-500 text-xs font-bold uppercase tracking-widest mb-1">Recipe by</p>
+                        <p className="text-stone-500 text-xs font-bold uppercase tracking-widest mb-1">{t('recipeBy')}</p>
                         <h3 className="text-xl font-bold text-stone-800 mb-6">Chef Maria Rodriguez</h3>
                     </div>
 
@@ -245,19 +245,19 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe }) => {
                         <h3 className="text-lg font-bold text-stone-900 mb-6">{t('nutritionalInfo')}</h3>
                         <div className="space-y-4">
                             <div className="flex justify-between items-center pb-3 border-b border-stone-100">
-                                <span className="text-stone-500">Calories</span>
-                                <span className="font-bold text-stone-800">{recipe.nutrition?.calories || '320'}</span>
+                                <span className="text-stone-500">{t('calories')}</span>
+                                <span className="font-bold text-stone-800">{recipe.nutrition?.calories || '320'} kcal</span>
                             </div>
                             <div className="flex justify-between items-center pb-3 border-b border-stone-100">
-                                <span className="text-stone-500">Protein</span>
+                                <span className="text-stone-500">{t('protein')}</span>
                                 <span className="font-bold text-stone-800">{recipe.nutrition?.protein || '25g'}</span>
                             </div>
                             <div className="flex justify-between items-center pb-3 border-b border-stone-100">
-                                <span className="text-stone-500">Fat</span>
+                                <span className="text-stone-500">{t('fat')}</span>
                                 <span className="font-bold text-stone-800">{recipe.nutrition?.fat || '15g'}</span>
                             </div>
                             <div className="flex justify-between items-center pb-3 border-b border-stone-100">
-                                <span className="text-stone-500">Carbs</span>
+                                <span className="text-stone-500">{t('carbs')}</span>
                                 <span className="font-bold text-stone-800">{recipe.nutrition?.carbs || '40g'}</span>
                             </div>
                         </div>
@@ -270,8 +270,8 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe }) => {
                         className="flex items-center justify-between p-6 bg-stone-900 text-white rounded-[2rem] hover:bg-stone-800 transition-colors group"
                     >
                         <div>
-                            <p className="text-xs text-stone-400 uppercase font-bold mb-1">Source</p>
-                            <p className="font-bold">Fuente Original</p>
+                            <p className="text-xs text-stone-400 uppercase font-bold mb-1">{t('source')}</p>
+                            <p className="font-bold">{t('originalRecipe')}</p>
                         </div>
                         <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors">
                             <Link2 size={20} />
